@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Modern Form with Modal in Next.js 15
 
-## Getting Started
+<p align="center">
+  <img src="https://img.shields.io/badge/Next.js-15.3-blue?logo=next.js&logoColor=white" alt="Next.js 15.3" />
+  <img src="https://img.shields.io/badge/React-19-61dafb?logo=react&logoColor=black" alt="React 19" />
+  <img src="https://img.shields.io/badge/TypeScript-5.4-3178c6?logo=typescript&logoColor=white" alt="TypeScript 5.4" />
+  <img src="https://img.shields.io/badge/shadcn--ui-%20-purple?logo=vercel&logoColor=white" alt="shadcn/ui" />
+  <img src="https://img.shields.io/badge/Parallel%20Routes-%E2%9C%94%EF%B8%8F-brightgreen" alt="Parallel Routes" />
+  <img src="https://img.shields.io/badge/Intercepted%20Routes-%E2%9C%94%EF%B8%8F-brightgreen" alt="Intercepted Routes" />
+</p>
 
-First, run the development server:
+---
+
+## 🔥 This project shows how to display a form inside a modal using:
+
+- **Modern Form Handling** — built with `useActionState`, `zod` validation, and server actions.
+- **Parallel Routes** (`@modal`) and **Intercepted Routes** (`(.)form`).
+- **Next.js 15.3 hooks**:
+  - `onNavigate`
+  - `useLinkStatus`
+- **Global modal state** — managed with React Context for full control.
+- **shadcn/ui Drawer** — beautiful, clean, and minimal modal component.
+
+---
+
+## 📂 Project Structure
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+.
+├── app/
+│   ├── @modal/
+│   │   └── (.)form/page.tsx        # Intercepted route: Form inside a modal
+│   ├── form/
+│   │   └── page.tsx                # Regular form page (without modal)
+│   ├── actions.tsx                 # Server action to handle form submission
+│   ├── layout.tsx                  # Root layout with modal slot
+│   └── page.tsx                    # Home page with ModalLink
+├── ui/
+│   ├── modal-drawer.tsx            # Modal wrapper using shadcn/ui Drawer
+│   ├── modal-link.tsx              # Link component using onNavigate to open modal
+│   ├── modal-button.tsx            # Button with loading state via useLinkStatus
+│   └── form.tsx                    # Form component inside the modal
+├── context/
+│   └── form-modal.tsx              # Global modal state (open / close)
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
