@@ -29,17 +29,18 @@
 .
 ├── app/
 │   ├── @modal/
-│   │   └── (.)form/page.tsx        # Intercepted route: Form inside a modal
-│   ├── form/
+│   │   └── (.)form/[slug]/page.tsx # Dynamic Intercepted route: Form inside a modal
+│   ├── form/[slug]
 │   │   └── page.tsx                # Regular form page (without modal)
-│   ├── actions.tsx                 # Server action to handle form submission
+│   ├── actions.tsx                 # Server action to handle forms submission
 │   ├── layout.tsx                  # Root layout with modal slot
 │   └── page.tsx                    # Home page with ModalLink
 ├── ui/
 │   ├── modal-drawer.tsx            # Modal wrapper using shadcn/ui Drawer
 │   ├── modal-link.tsx              # Link component using onNavigate to open modal
 │   ├── modal-button.tsx            # Button with loading state via useLinkStatus
-│   └── form.tsx                    # Form component inside the modal
+│   ├── form-message.tsx            # Message Form component
+│   └── form-user.tsx               # User Form component
 ├── context/
 │   └── form-modal.tsx              # Global modal state (open / close)
 ```

@@ -12,7 +12,15 @@ import {
 	DrawerTitle,
 } from '@/ui/shadcn/drawer';
 
-export function ModalDrawer({ children }: { children: React.ReactNode }) {
+export function ModalDrawer({
+	children,
+	title,
+	description,
+}: {
+	children: React.ReactNode;
+	title: string;
+	description: string;
+}) {
 	const router = useRouter();
 	const { open, setOpen } = useFormModal();
 
@@ -38,10 +46,8 @@ export function ModalDrawer({ children }: { children: React.ReactNode }) {
 			<DrawerContent aria-describedby="form-drawer-modal">
 				<div className="mx-auto w-full max-w-sm px-4">
 					<DrawerHeader className="mb-2">
-						<DrawerTitle>Add message</DrawerTitle>
-						<DrawerDescription>
-							Here you can send me a message!
-						</DrawerDescription>
+						<DrawerTitle>{title}</DrawerTitle>
+						<DrawerDescription>{description}</DrawerDescription>
 					</DrawerHeader>
 					{children}
 					<DrawerFooter />

@@ -7,12 +7,23 @@ import { toast } from 'sonner';
 import { Button } from '@/ui/shadcn/button';
 import { Input } from '@/ui/shadcn/input';
 import { Label } from '@/ui/shadcn/label';
-import { Textarea } from '@/ui/shadcn/textarea';
 
-import { submitForm } from '@/app/actions';
+import { submitUserForm } from '@/app/actions';
 
-export function Form() {
-	const [state, formAction, pending] = useActionState(submitForm, null);
+const initialState = {
+	values: {
+		email: '',
+		name: '',
+		age: '',
+	},
+	success: false,
+};
+
+export function FormUser() {
+	const [state, formAction, pending] = useActionState(
+		submitUserForm,
+		initialState,
+	);
 	const { setOpen } = useFormModal();
 
 	useEffect(() => {
@@ -42,15 +53,28 @@ export function Form() {
 				)}
 			</fieldset>
 			<fieldset className="space-y-1.5">
-				<Label htmlFor="message">Message</Label>
-				<Textarea
-					name="message"
-					placeholder="Enter your message"
-					defaultValue={state?.values?.message ?? ''}
+				<Label htmlFor="name">Name</Label>
+				<Input
+					name="name"
+					placeholder="Enter your name"
+					defaultValue={state?.values?.name ?? ''}
 				/>
-				{state?.error?.message && (
+				{state?.error?.name && (
 					<p className="text-destructive text-sm" aria-live="polite">
-						{state.error.message[0]}
+						{state.error.name[0]}
+					</p>
+				)}
+			</fieldset>
+			<fieldset className="space-y-1.5">
+				<Label htmlFor="age">Age</Label>
+				<Input
+					name="age"
+					placeholder="Enter your age"
+					defaultValue={state?.values?.age ?? ''}
+				/>
+				{state?.error?.age && (
+					<p className="text-destructive text-sm" aria-live="polite">
+						{state.error.age[0]}
 					</p>
 				)}
 			</fieldset>
